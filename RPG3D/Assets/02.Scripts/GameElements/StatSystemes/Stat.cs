@@ -1,28 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-
-
-
-/*
- * https://wlsdn629.tistory.com/entry/%EC%9C%A0%EB%8B%88%ED%8B%B0%EC%97%90%EC%84%9C-ChatGPT-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0-2?category=1051398
- * 
- * Test Decoparent Ai NOXX System
- * 
- */
 
 namespace RPG.GameElements.Stats
 {
-
     public enum StatType
     {
         HPMax,
         MPMax,
         STR,
-        DEF
+        DEF,
     }
+
     public class Stat
     {
         public StatType type;
@@ -37,17 +27,16 @@ namespace RPG.GameElements.Stats
         }
         private float _value;
         public event Action<float> onValueChanged;
+
         public float valueModified
         {
             get => _valueModified;
             private set
             {
                 _valueModified = value;
-                onValueChanged?.Invoke(value);
+                onValueModifiedChanged?.Invoke(value);
             }
         }
-
-
         private float _valueModified;
         public event Action<float> onValueModifiedChanged;
 
@@ -55,45 +44,56 @@ namespace RPG.GameElements.Stats
         private List<StatModifier> _modifiers;
 
 
-        public void AddModifer(StatModifier modifire)
+        public Stat(StatType type, float value)
         {
-            _modifiers.Add(modifire);
+            this.type = type;
+            this.value = value;
+        }
+
+
+        public void AddModifer(StatModifier modifier)
+        {
+            _modifiers.Add(modifier);
             valueModified = CalcValueModified();
         }
 
-        public void RemoveModifier(StatModifier modifire)
+        public void RemoveModifer(StatModifier modifier)
         {
-            _modifiers.Remove(modifire);
+            _modifiers.Remove(modifier);
             valueModified = CalcValueModified();
-
         }
 
         private float CalcValueModified()
         {
-            float sumAddFalt = 0.0f;
+            float sumAddFlat = 0.0f;
             float sumAddPercent = 0.0f;
             float sumMulPercent = 0.0f;
 
-            foreach(var modifire in _modifiers)
+            foreach (var modifier in _modifiers)
             {
-                switch (modifire.type)
+                switch (modifier.modifyingOption)
                 {
-                    case
+                    case StatModifyingOption.AddFlat:
+                        {
+                            sumAddFlat += modifier.value;
+                        }
+                        break;
+                    case StatModifyingOption.AddPercent:
+                        {
+                            sumAddPercent += modifier.value;
+                        }
+                        break;
+                    case StatModifyingOption.MulPercent:
+                        {
+                            sumMulPercent *= modifier.value;
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
 
-
-
-
-
-
-
-            return (_value + sumAddFalt) + (_value * sumAddPercent) + (_valueModified + sumMulPercent);
+            return (_value + sumAddFlat) + (_value * sumAddPercent) + (_valueModified * sumMulPercent);
         }
-
-
-
-
-
     }
 }

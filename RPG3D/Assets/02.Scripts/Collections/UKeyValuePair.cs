@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public struct UKeyValuePair<TKey, TValue>
 {
+
+    public TKey Key;
+    public TValue Value;
     // Start is called before the first frame update
     void Start()
     {

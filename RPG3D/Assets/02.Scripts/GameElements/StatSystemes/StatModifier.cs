@@ -1,27 +1,22 @@
-using RPG.GameElements.Stats;
+ï»¿using RPG.GameElements.Stats;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// MonoBehaviour ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.. ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½î¶»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ScriptableObject ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö¾ï¿½Î°ï¿½ ï¿½ï¿½Å¸ï¿½Ó¿ï¿½ StatModifier ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½áµµï¿½ï¿½.
 
-
-//MonoBehaviour ¸¦ ±»ÀÌ? ±×³É ½ºÅÝÁ¶Á¤ÀÚ ¾î¶»°Ô °¡Áö°í ÀÖ´ÂÁö¿¡ ´ëÇÑ µ¥ÀÌÅÍ¸¸ SriotableObject °°Àº°÷¿¡ ¸®½ºÆ®·Î ³Ö¾îµÎ·Î ·±Å¸ÀÓ¿¡ StatModifier »ý¼ºÇØµµ µÊ.
-
-
-public enum StatModifiyingOption
+public enum StatModifyingOption
 {
     None,
     AddFlat,
     AddPercent,
-    MulPercent
+    MulPercent,
 }
-
 
 public class StatModifier : MonoBehaviour
 {
     public StatType type;
+    public StatModifyingOption modifyingOption;
     public float value;
-
-    
-
 }
