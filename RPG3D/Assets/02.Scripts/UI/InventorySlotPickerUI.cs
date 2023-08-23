@@ -1,8 +1,8 @@
-using RPG.Data;
 using RPG.DependencySources;
 using RPG.UI;
 using System.Collections;
 using System.Collections.Generic;
+using _02.Scripts.Data;
 using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,7 +39,7 @@ namespace RPG.UI
 
             if (Input.GetMouseButtonDown(0))
             {
-                // UI ≈¨∏ØΩ√
+                // UI ÌÅ¥Î¶≠Ïãú
                 if (inputModule.TryGetHovered<GraphicRaycaster>(out List<GameObject> hovered))
                 {
                     foreach (var go in hovered)
@@ -59,7 +59,7 @@ namespace RPG.UI
                         }
                     }
                 }
-                //World ≈¨∏ØΩ√
+                //World ÌÅ¥Î¶≠Ïãú
                 else
                 {
                     if (_presenter.dropCommand.TryExecute(_pickedType, _pickedIndex, _pickedData.itemNum))

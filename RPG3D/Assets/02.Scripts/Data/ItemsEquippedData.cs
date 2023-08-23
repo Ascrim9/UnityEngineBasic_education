@@ -1,7 +1,8 @@
-using RPG.Collections;
 using System;
+using RPG.Collections;
+using RPG.GameElements;
 
-namespace RPG.Data
+namespace _02.Scripts.Data
 {
     public class ItemsEquippendData : IDataModel  
     {

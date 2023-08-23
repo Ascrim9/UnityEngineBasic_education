@@ -1,4 +1,3 @@
-using RPG.Data;
 using RPG.Singletons;
 using System;
 using System.Collections.Generic;

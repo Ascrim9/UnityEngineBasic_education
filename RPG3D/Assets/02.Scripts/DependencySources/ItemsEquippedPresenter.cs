@@ -1,17 +1,17 @@
-using RPG.Data;
-using System.Collections.ObjectModel;
+using _02.Scripts.Data;
+using RPG.Collections;
 
 namespace RPG.DependencySources
 {
     public class ItemsEquippedPresenter
     {
-        public class ItemsEquipeedSource
+        public class ItemsEquippedSource
         {
             public ObservableCollection<ItemsEquippendData.ItemEquippedSlotData> itemsEquippedSlotDatum;
 
-            public ItemsEquipeedSource()
+            public ItemsEquippedSource()
             {
-                if(DataModelManager.instance.TryGet(out ItemsEquippendData source))
+                if (DataModelManager.instance.TryGet(out ItemsEquippendData source))
                 {
                     itemsEquippedSlotDatum
                         = new ObservableCollection<ItemsEquippendData.ItemEquippedSlotData>(source.slotDatum);
@@ -22,11 +22,11 @@ namespace RPG.DependencySources
                 }
             }
         }
-        public ItemsEquipeedSource itemsEquipeedSource;
+        public ItemsEquippedSource itemsEquippedSource;
 
         public ItemsEquippedPresenter()
         {
-            itemsEquipeedSource = new();
+            itemsEquippedSource = new ItemsEquippedSource();
         }
     }
 }

@@ -1,9 +1,7 @@
-using RPG.Data;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Data
+namespace _02.Scripts.Data
 {
     public class ItemDataRepository : MonoBehaviour
     {

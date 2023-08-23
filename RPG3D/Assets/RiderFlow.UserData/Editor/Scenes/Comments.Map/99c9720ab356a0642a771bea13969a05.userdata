@@ -1,0 +1,14 @@
+{
+  "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-702356425-0": {
+    "GameObjectId": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-702356425-0",
+    "CommentText": "AB",
+    "AssetGUID": "99c9720ab356a0642a771bea13969a05",
+    "UniqueItemID": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-702356425-0"
+  },
+  "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-325741251-0": {
+    "GameObjectId": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-325741251-0",
+    "CommentText": "Player\n",
+    "AssetGUID": "99c9720ab356a0642a771bea13969a05",
+    "UniqueItemID": "GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-325741251-0"
+  }
+}

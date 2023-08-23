@@ -1,0 +1,44 @@
+{
+  "ec883ba98efa60a4a94243099cc9daeb": {
+    "sceneGuid": "99c9720ab356a0642a771bea13969a05",
+    "uniqueCameraId": "ec883ba98efa60a4a94243099cc9daeb",
+    "name": "awdw",
+    "pointX": -4.13901043,
+    "pointY": 7.02005243,
+    "pointZ": -10.2100458,
+    "directionX": 0.283369243,
+    "directionY": 0.07900244,
+    "directionZ": -0.0234395452,
+    "directionW": 0.9554833,
+    "zoom": 0.2853721,
+    "cameraMode": 2
+  },
+  "d26c7961912c45743abbcfb779925e34": {
+    "sceneGuid": "99c9720ab356a0642a771bea13969a05",
+    "uniqueCameraId": "d26c7961912c45743abbcfb779925e34",
+    "name": "Camera Preset",
+    "pointX": -4.13901043,
+    "pointY": 7.02005243,
+    "pointZ": -10.2100458,
+    "directionX": 0.283369243,
+    "directionY": 0.07900244,
+    "directionZ": -0.0234395452,
+    "directionW": 0.9554833,
+    "zoom": 0.2853721,
+    "cameraMode": 2
+  },
+  "60fdebf9f81d3294f93adcdf87e7916f": {
+    "sceneGuid": "99c9720ab356a0642a771bea13969a05",
+    "uniqueCameraId": "60fdebf9f81d3294f93adcdf87e7916f",
+    "name": "Camera Preset",
+    "pointX": 4.895142,
+    "pointY": 5.686919,
+    "pointZ": -5.435402,
+    "directionX": 0.257202238,
+    "directionY": -0.240395173,
+    "directionZ": 0.06621441,
+    "directionW": 0.9336539,
+    "zoom": 0.2853721,
+    "cameraMode": 2
+  }
+}

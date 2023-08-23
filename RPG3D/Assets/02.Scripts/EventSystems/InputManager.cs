@@ -134,7 +134,19 @@ namespace RPG.EventSystems
                         ui.Show();
                 }
             });
+            
+            global.AddKeyDownAction(KeyCode.Tab, () =>
+            {
+                if (UIManager.instance.TryGet(out ItemsEquippedUI ui))
+                {
+                    if (ui.gameObject.activeSelf)
+                        ui.Hide();
+                    else
+                        ui.Show();
+                }
+            });
         }
+        
     }
 
 }
