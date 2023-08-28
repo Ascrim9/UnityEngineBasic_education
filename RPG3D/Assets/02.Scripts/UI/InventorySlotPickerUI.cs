@@ -1,8 +1,9 @@
+using RPG.Data;
 using RPG.DependencySources;
+using RPG.GameElements;
 using RPG.UI;
 using System.Collections;
 using System.Collections.Generic;
-using _02.Scripts.Data;
 using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,39 +40,53 @@ namespace RPG.UI
 
             if (Input.GetMouseButtonDown(0))
             {
-                // UI ÌÅ¥Î¶≠Ïãú
+                // UI ≈¨∏ØΩ√
                 if (inputModule.TryGetHovered<GraphicRaycaster>(out List<GameObject> hovered))
                 {
                     foreach (var go in hovered)
                     {
-                        if (go.TryGetComponent(out InventorySlot slot))
+                        if (go.TryGetComponent(out InventorySlot other))
                         {
-                            if (slot.itemType == _pickedType)
+                            if (other.itemType == _pickedType)
                             {
-                                if (slot.slotIndex != _pickedIndex)
+                                if (other.slotIndex != _pickedIndex)
                                 {
-                                    _presenter.swapCommand.TryExecute(_pickedType, _pickedIndex, slot.slotIndex);
+                                    _presenter.swapCommand.TryExecute(_pickedType, _pickedIndex, other.slotIndex);
                                 }
-
+                                Hide();
+                                return;
+                            }
+                        }
+                        else if (_pickedType == ItemType.Equipment &&
+                                 go.TryGetComponent(out ItemEquippedSlot itemEquippedSlot))
+                        {
+                            if (_pickedData.isEmpty == false &&
+                                ItemDataRepository.instance.items.TryGetValue(_pickedData.itemID, out ItemData itemData) &&
+                                itemData is EquipmentItemData)
+                            {
+                                if (UIManager.instance.TryGet(out InventoryUI inventoryUI))
+                                {
+                                    ((EquipmentItemData)itemData).Use(inventoryUI.GetSlot(_pickedType, _pickedIndex));
+                                }
                                 Hide();
                                 return;
                             }
                         }
                     }
+
+                    Hide();
                 }
-                //World ÌÅ¥Î¶≠Ïãú
+                //World ≈¨∏ØΩ√
                 else
                 {
                     if (_presenter.dropCommand.TryExecute(_pickedType, _pickedIndex, _pickedData.itemNum))
                     {
-
+                        Hide();
+                        return;
                     }
+
                     Hide();
                 }
-            }
-            else if (Input.GetMouseButtonDown(1))
-            {
-                Hide();
             }
         }
 

@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using RPG.FSM;
 using RPG.GameElements.Stats;
 using System.Collections.Generic;
@@ -9,20 +8,18 @@ namespace RPG.Controllers
     public class PlayerController : ControllerBase
     {
         [SerializeField] private List<UKeyValuePair<StatType, float>> _statList;
-        public Dictionary<StateType, Stat> stats;
+        public Dictionary<StatType, Stat> stats;
 
         private MachineManager _machineManager;
-
 
         override protected void Awake()
         {
             base.Awake();
             _machineManager = GetComponent<MachineManager>();
-
-            stats = new Dictionary<StateType, Stat>();
-            foreach(var statPair in _statList)
+            stats = new Dictionary<StatType, Stat>();
+            foreach (var statPair in _statList)
             {
-                stats.Add((StateType)statPair.Key, new Stat(statPair.Key, statPair.Value));
+                stats.Add(statPair.Key, new Stat(statPair.Key, statPair.Value));
             }
         }
 

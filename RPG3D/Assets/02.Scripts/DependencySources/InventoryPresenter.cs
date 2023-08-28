@@ -1,8 +1,8 @@
 using RPG.Collections;
 using RPG.Controllers;
+using RPG.Data;
 using System;
 using System.Linq;
-using _02.Scripts.Data;
 using UnityEngine;
 
 namespace RPG.DependencySources

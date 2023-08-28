@@ -15,10 +15,9 @@ public class EnemyMachineManager : MachineManager
     [SerializeField] private LayerMask _seek_targetMask;
     [SerializeField] private Vector3 _seek_offset;
     [SerializeField] private float _attack_range;
-    [SerializeField] private float _radianRange;
-    [SerializeField] private float _minTime;
-    [SerializeField] private float _maxTime;
-
+    [SerializeField] private float _patrol_range;
+    [SerializeField] private float _patrol_minTime;
+    [SerializeField] private float _patrol_maxTime;
 
 
     protected override void Awake()
@@ -33,9 +32,19 @@ public class EnemyMachineManager : MachineManager
                                      Vector3.Distance(_behaviourTree.blackBoard.target.position, transform.position) < _attack_range)
                         .Execution(() => ChangeState(StateType.Attack) ? Result.Success : Result.Failure)
                     .ExitCurrentComposite()
-            .Sequence()
-                .MoveToRandomDestination(_radianRange)
-                .RandomSleep(_minTime, _maxTime);
+                .Sequence()
+                    .Condition(() =>
+                    {
+                        BlackBoard blackBoard = _behaviourTree.blackBoard;
+                        if (blackBoard.target == null &&
+                            blackBoard.agent.remainingDistance <= blackBoard.agent.stoppingDistance)
+                        {
+                            return true;
+                        }
+                        return false;
+                    })
+                        .Patrol(_patrol_range);
+                    //.RandomSleep(_patrol_minTime, _patrol_maxTime);
     }
 
     protected override void Update()

@@ -103,7 +103,32 @@ namespace RPG.AISystems.BehaviourTree
 
             return this;
         }
-        
+
+        public BehaviourTreeBuilder Patrol(float range)
+        {
+            Node node = new Patrol(range, this, blackBoard);
+            AttachAsChild(_current, node);
+
+            if (_compositeStack.Count > 0)
+                _current = _compositeStack.Peek();
+            else
+                _current = null;
+
+            return this;
+        }
+        public BehaviourTreeBuilder RandomSleep(float minTime, float maxTime)
+        {
+            Node node = new RandomSleep(minTime, maxTime, this, blackBoard);
+            AttachAsChild(_current, node);
+
+            if (_compositeStack.Count > 0)
+                _current = _compositeStack.Peek();
+            else
+                _current = null;
+
+            return this;
+        }
+
         public BehaviourTreeBuilder Seek(float radius, float angle, float deltaAngle, LayerMask targetMask, Vector3 offset)
         {
             Node node = new Seek(this, blackBoard, radius, angle, deltaAngle, targetMask, offset);
@@ -143,7 +168,7 @@ namespace RPG.AISystems.BehaviourTree
             _current = composite;
             return this;
         }
-        
+
         private void AttachAsChild(Node parent, Node child)
         {
             if (parent is IParentOfChild)
@@ -159,37 +184,5 @@ namespace RPG.AISystems.BehaviourTree
                 throw new Exception($"[BehaviourTreeBuilder] : You cannot attach child to {parent.GetType()}");
             }
         }
-
-
-        public BehaviourTreeBuilder MoveToRandomDestination(float movementRadius)
-        {
-            Node node = new MoveToRandomDestination(this, blackBoard, movementRadius);
-            AttachAsChild(_current, node);
-            
-            Debug.Log("MoveToRandom");
-
-            if (_compositeStack.Count > 0)
-                _current = _compositeStack.Peek();
-            else
-                _current = null;
-
-            return this;
-        }
-        
-
-        public BehaviourTreeBuilder RandomSleep(float minSleepDuration, float maxSleepDuration)
-        {
-            Node node = new RandomSleep(this, blackBoard, minSleepDuration, maxSleepDuration);
-            AttachAsChild(_current, node);
-
-            if (_compositeStack.Count > 0)
-                _current = _compositeStack.Peek();
-            else
-                _current = null;
-
-            return this;
-        }
-
-        
     }
 }

@@ -1,7 +1,7 @@
 using RPG.Collections;
+using RPG.Data;
 using System.Collections;
 using System.Linq;
-using _02.Scripts.Data;
 using UnityEngine;
 
 public class ItemDropped : MonoBehaviour

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _02.Scripts.Data
+namespace RPG.Data
 {
     [CreateAssetMenu(fileName = "new SpendItemData", menuName = "RPG/Data/Create SpendItemData")]
     public class SpendItemData : UsableItemData

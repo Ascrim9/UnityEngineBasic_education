@@ -1,8 +1,8 @@
+using RPG.Data;
 using RPG.DependencySources;
 using RPG.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
-using _02.Scripts.Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -19,9 +19,22 @@ namespace RPG.UI
         private List<InventorySlot> _equipmentSlots = new List<InventorySlot>();
         private List<InventorySlot> _spendSlots = new List<InventorySlot>();
         private List<InventorySlot> _etcSlots = new List<InventorySlot>() ;
-        [SerializeField] private CustomInputModule _inputModule;
         [SerializeField] private Button _close;
 
+        public InventorySlot GetSlot(ItemType itemType, int slotIndex)
+        {
+            switch (itemType)
+            {
+                case ItemType.Equipment:
+                    return _equipmentSlots[slotIndex];
+                case ItemType.Spend:
+                    return _spendSlots[slotIndex];
+                case ItemType.ETC:
+                    return _etcSlots[slotIndex];
+                default:
+                    throw new System.Exception($"[InventoryUI] : Failed to get slot. wrong item type {itemType}.");
+            }
+        }
 
 
         public override void InputAction()
@@ -31,7 +44,7 @@ namespace RPG.UI
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (_inputModule.TryGetHovered<GraphicRaycaster, InventorySlot>(out slot))
+                if (inputModule.TryGetHovered<GraphicRaycaster, InventorySlot>(out slot))
                 {
                     InventoryData.ItemSlotData slotData = presenter.inventorySource.GetSlotData(slot.itemType, slot.slotIndex);
                     if (slotData.itemNum > 0 &&
@@ -43,23 +56,21 @@ namespace RPG.UI
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                if (_inputModule.TryGetHovered<GraphicRaycaster, InventorySlot>(out slot))
+                if (inputModule.TryGetHovered<GraphicRaycaster, InventorySlot>(out slot))
                 {
                     InventoryData.ItemSlotData slotData = presenter.inventorySource.GetSlotData(slot.itemType, slot.slotIndex);
                     if (slotData.isEmpty == false &&
                         ItemDataRepository.instance.items.TryGetValue(slotData.itemID, out ItemData itemData) &&
                         itemData is UsableItemData)
                     {
-                        var data = itemData as EquipmentItemData;
-                        if (data is not null)
+                        if (itemData is EquipmentItemData)
                         {
-                            data.Use(slot);
+                            ((EquipmentItemData)itemData).Use(slot);
                         }
                         else
                         {
                             ((UsableItemData)itemData).Use();
                         }
-                        ((UsableItemData)itemData).Use();
                         Debug.Log($"Used item in slot {slot.slotIndex}");
                     }
                 }
@@ -77,7 +88,7 @@ namespace RPG.UI
             for (int i = 0; i < equipmentDatum.Count; i++)
             {
                 slot = Instantiate(_slotPrefab, _equipmentContent);
-                slot.itemType = ItemType.Equipment;
+                slot.itemType = Data.ItemType.Equipment;
                 slot.slotIndex = i;
                 slot.Refresh(equipmentDatum[i].itemID, equipmentDatum[i].itemNum);
                 _equipmentSlots.Add(slot);
@@ -90,10 +101,10 @@ namespace RPG.UI
 
             var spendDatum = presenter.inventorySource.spendSlotDatum;
 
-            for (var i = 0; i < spendDatum.Count; i++)
+            for (int i = 0; i < spendDatum.Count; i++)
             {
                 slot = Instantiate(_slotPrefab, _spendContent);
-                slot.itemType = ItemType.Spend;
+                slot.itemType = Data.ItemType.Spend;
                 slot.slotIndex = i;
                 slot.Refresh(spendDatum[i].itemID, spendDatum[i].itemNum);
                 _spendSlots.Add(slot);
@@ -109,7 +120,7 @@ namespace RPG.UI
             for (int i = 0; i < etcDatum.Count; i++)
             {
                 slot = Instantiate(_slotPrefab, _etcContent);
-                slot.itemType = ItemType.ETC;
+                slot.itemType = Data.ItemType.ETC;
                 slot.slotIndex = i;
                 slot.Refresh(etcDatum[i].itemID, etcDatum[i].itemNum);
                 _etcSlots.Add(slot);

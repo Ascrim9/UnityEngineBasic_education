@@ -1,15 +1,16 @@
-using System;
-using System.Collections.Generic;
 using RPG.Singletons;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace _02.Scripts.Data
+namespace RPG.Data
 {
     public enum DataCategory
     {
         None,
         Inventory,
-        ItemsEquipped
+        ItemsEquipped,
     }
 
     // Repository pattern 
@@ -81,7 +82,7 @@ namespace _02.Scripts.Data
             _dataModelsByCategory = new Dictionary<DataCategory, IDataModel>();
 
             Register<InventoryData>(DataCategory.Inventory);
-            Register <ItemsEquippendData> (DataCategory.ItemsEquipped);
+            Register<ItemsEquippedData>(DataCategory.ItemsEquipped);
         }
     }
 }

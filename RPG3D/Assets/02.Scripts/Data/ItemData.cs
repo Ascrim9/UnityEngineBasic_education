@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace _02.Scripts.Data
+namespace RPG.Data
 {
     public abstract class ItemData : ScriptableObject
     {

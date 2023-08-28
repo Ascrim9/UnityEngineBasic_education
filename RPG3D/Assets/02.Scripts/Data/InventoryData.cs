@@ -1,7 +1,7 @@
 using System;
 using RPG.Collections;
 
-namespace _02.Scripts.Data
+namespace RPG.Data
 {
     public enum ItemType
     {
@@ -23,7 +23,6 @@ namespace _02.Scripts.Data
 
             public int itemID;
             public int itemNum;
-            public int enhandlavel;
 
             public virtual int CompareTo(ItemSlotData other)
             {
@@ -43,7 +42,6 @@ namespace _02.Scripts.Data
         public class EquipmentSlotData : ItemSlotData
         {
             public int enhanceLevel;
-            public int itemId { get; set; }
 
             public override int CompareTo(ItemSlotData other)
             {

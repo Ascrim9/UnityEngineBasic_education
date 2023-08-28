@@ -134,7 +134,7 @@ namespace RPG.EventSystems
                         ui.Show();
                 }
             });
-            
+
             global.AddKeyDownAction(KeyCode.Tab, () =>
             {
                 if (UIManager.instance.TryGet(out ItemsEquippedUI ui))
@@ -146,7 +146,6 @@ namespace RPG.EventSystems
                 }
             });
         }
-        
     }
 
 }

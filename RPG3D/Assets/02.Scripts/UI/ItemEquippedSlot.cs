@@ -1,12 +1,11 @@
+using RPG.Data;
+using RPG.GameElements;
 using System.Collections;
 using System.Collections.Generic;
-using _02.Scripts.Data;
-using RPG.GameElements;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace  RPG.UI
+namespace RPG.UI
 {
     public class ItemEquippedSlot : MonoBehaviour
     {
@@ -22,25 +21,24 @@ namespace  RPG.UI
             {
                 image.sprite = ItemDataRepository.instance.equipments[itemID].icon;
                 image.color = Color.white;
-
             }
             else
             {
                 image.color = Color.clear;
             }
-
         }
-
 
         public void Shadow(int itemID)
         {
             if (itemID > 0)
             {
                 image.sprite = ItemDataRepository.instance.equipments[itemID].icon;
-                image.color = new Color(1, 1, 1, 0.7f);
+                image.color = new Color(1f, 1f, 1f, 0.7f);
+            }
+            else
+            {
+                image.color = Color.clear;
             }
         }
-
-
-    }    
+    }
 }

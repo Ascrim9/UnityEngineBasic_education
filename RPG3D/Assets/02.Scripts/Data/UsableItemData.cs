@@ -1,4 +1,8 @@
-namespace _02.Scripts.Data 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace RPG.Data 
 {
     public abstract class UsableItemData : ItemData
     {

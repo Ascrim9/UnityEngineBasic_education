@@ -20,4 +20,4 @@ namespace RPG.AISystems.BehaviourTree
             return Result.Running;
         }
     }
-}   
+}

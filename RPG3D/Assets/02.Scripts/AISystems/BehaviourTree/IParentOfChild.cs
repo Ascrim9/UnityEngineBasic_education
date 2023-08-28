@@ -1,10 +1,7 @@
-using System.Collections.Generic;
-
 namespace RPG.AISystems.BehaviourTree
 {
-	public interface IParentOfChild
+    public interface IParentOfChild
     {
-		Node child { get; set; }
-
-	}
+        Node child { get; set; }
+    }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _02.Scripts.Data
+namespace RPG.Data
 {
     [CreateAssetMenu(fileName = "new ETCItemData", menuName = "RPG/Data/Create ETCItemData")]
     public class ETCItemData : ItemData
