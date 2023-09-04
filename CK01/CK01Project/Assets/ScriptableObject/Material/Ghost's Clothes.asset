@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a960cf182b0af8d4bbf7ee9cee19a8d0, type: 3}
+  m_Name: Ghost's Clothes
+  m_EditorClassIdentifier: 
+  instantEffectItemType: 0
+  itemType: 1
+  itemName: Ghost's Clothes
+  icon: {fileID: 21300000, guid: 0360d6c8ba2c1c34d9ca6ac720a30f34, type: 3}
+  dropChance: 50

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480f8fbc57909f94da6bbfbfacc795a4, type: 3}
+  m_Name: slingshot
+  m_EditorClassIdentifier: 
+  instantEffectItemType: 0
+  itemType: 2
+  itemName: slingshot
+  icon: {fileID: 21300000, guid: d82cf9a48bacd8d4faaf84038e12720a, type: 3}
+  dropChance: 0
+  equipmentType: 0
+  bulletPrefabs:
+  - {fileID: 5258531730941433109, guid: c682b13336d785b41ba14ceab3bd93e6, type: 3}
+  - {fileID: 638891365973959241, guid: 13c1f13a6da2b874bbf077aa059795e2, type: 3}
+  - {fileID: 342241874544813474, guid: cda896ef34228ee49bb757b1ce1a2c1c, type: 3}
+  - {fileID: 6348752424408613927, guid: b2a65bfed4b26354789cec6806551f9b, type: 3}
+  attackLevel: 1
+  itemCooldown: 0
+  itemEffects: []
+  itemEffectDescription: "\uC2EC\uC2EC\uD560\uB54C\uB9C8\uB2E4 \uD63C\uC790 \uC3D8\uBA74\uC11C
+    \uB180\uC558\uB358 \uC791\uC740 \uC0C8\uCD1D\uC774\uB2E4. \uAC10\uC790\uB97C
+    \uC8FC\uB85C \uC3D8\uBA70 \uB180\uC558\uB2E4."
+  strength: 10
+  agility: 0
+  intelligence: 0
+  vitality: 5
+  damage: 10
+  criticalChance: 15
+  criticalPower: 0
+  maxHp: 0
+  armor: 0
+  evasion: 0
+  magicResistance: 0
+  fireDamage: 0
+  iceDamage: 0
+  craftingMaterials:
+  - data: {fileID: 11400000, guid: c455baf0178331d4985fa8a7cdc2a4f0, type: 2}
+    stackSize: 2
